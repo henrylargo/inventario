@@ -1,0 +1,124 @@
+table.reporte {
+    border-style: none;
+    width: 100%;
+    float: left;
+}
+
+/* Cabecera tabla */
+table.reporte tr th{
+    background: #c4e3f3;
+    font-size: 10pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+table.reporte tr.impar{
+    background: #036;
+} 
+table.reporte tr.par{
+    background: #007d72;
+}
+table.reporte td{
+    font-size: 9pt;
+}   
+
+/* ALINEACION */
+.alinCent{
+    text-align: center !important;
+}
+.alinIzq{
+    text-align: left !important;
+}
+.alinDer{
+    text-align: right !important;
+}
+.alinVertCent{
+    vertical-align: middle !important;
+}
+.alinVertSup{
+    vertical-align: top !important;
+}
+.alinVertInf{
+    vertical-align: bottom !important;
+}
+
+/* */
+.textoBarra{
+    font-size: 11pt;
+    font-weight: bold;
+    color: black;
+    margin-left: 10px;
+}
+
+.barraTitulo {
+    background-image: url('#{facesContext.externalContext.requestContextPath}/resources/imagen/esquinaRedondaIzqSuperior.gif'); 
+    background-repeat: no-repeat;
+    background-color: #c4e3f3;
+    font-weight: bold;
+    color: black;
+    padding: 5px;
+    margin: 0px 0px 0px 2px; 
+}
+
+.barraTitulo a{
+    color: #fff;
+    text-decoration: underline;	
+}
+
+/* */
+.barraBotones {
+    background-position: left bottom; 
+    background-repeat: no-repeat; 
+    background-color: #c4e3f3;
+    color: #000;
+    padding: 5px;
+    margin: 0px 0px 0px 2px; 
+}
+
+.barraBotones .boton {
+    background-color: #ddd;
+    font-size:12px;
+    height:25px; 
+}
+
+.formulario-label {
+    color: black;
+    background-color: #c4e3f3;
+    text-align: right;
+    width: 20em;
+    vertical-align: middle;
+    font-size: 9pt;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.formulario-combo {
+    font-size: 5px;
+    background-color: #D20005;
+}
+
+.cuadro-texto {
+    text-transform: uppercase; 
+    font-size: 10px;
+    width: 400px;
+}
+
+.calendarClass input {
+    width: 50px !important
+}
+
+/*** override primefaces style ***/
+.ui-message-info,.ui-message-error,.ui-message-warn,.ui-message-fatal {
+	border: 0!important;
+	margin: 0!important;
+	padding: 0!important;
+}
+
+.ui-messages-error,.ui-message-error {
+	color: #D8000C;
+	background-color: #fff!important;
+}
+
+.ui-widget {
+   font-size: 12px !important;
+}
