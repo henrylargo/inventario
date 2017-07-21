@@ -5,9 +5,16 @@
  */
 package com.inventory.controller;
 
+import com.inventory.entity.Usuario;
+import com.inventory.service.UsuarioService;
+import com.inventory.util.Util;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.persistence.NoResultException;
 
 /**
  *
@@ -18,6 +25,36 @@ import javax.inject.Named;
 public class LoginController implements Serializable {
     
     String usuario, clave;
+    
+    @EJB
+    UsuarioService usuarioService;
+    
+    public String iniciarSesion() {
+        System.out.println("iniciarSesion inventory");
+        String redireccion = null;
+        try {
+            Map<String, Object> criterios = new HashMap<>();
+            criterios.put("usuario", getUsuario());
+            criterios.put("clave", getClave());
+            System.out.println("Valores ingresados:  usuario:  " + getUsuario() + "     clave:   " + getClave());
+            Usuario usuario = usuarioService.obtenerUsuario(criterios);
+            //setUsuariologueado(usuarioService.obtenerUsuario(criterios));
+            //if (!Util.esNulo(getUsuariologueado()) && !Util.esVacio(getUsuariologueado())) {
+            if (!Util.esNulo(usuario) && !Util.esVacio(usuario)) {
+                //setUsuarioSesion(getUsuariologueado().getUsuario());
+                //setEmpresaSesion(getUsuariologueado().getCodigoEmpresa().getNombre());
+                //System.out.println("usuario sesion:   " + getUsuarioSesion());
+                //System.out.println("empresa sesion:   " + getEmpresaSesion());
+                //System.out.println("usuario logueado:   " + getUsuariologueado().toString());
+                System.out.println("usuario inicia sesion:  " + usuario.toString());
+                redireccion = "/inicio/principal?faces-redirect=true";
+            }
+        } catch (NoResultException e) {
+            System.out.println("Error:  " + e.getMessage());
+        }
+        return redireccion;
+    }
+    
 
     public String getUsuario() {
         return usuario;
@@ -35,10 +72,7 @@ public class LoginController implements Serializable {
         this.clave = clave;
     }
     
-    public String iniciarSesion() {
-        System.out.println("iniciarSesion inventory");
-        return "/inicio/principal?faces-redirect=true";
-    }
+    
     
     
 }
